@@ -103,7 +103,9 @@ const formatMoney = (value) => {
       }
   };
     // Gắn sự kiện input để định dạng ngay khi nhập
-    document.getElementById("moneyInput").addEventListener("blur", validateMoneyInput);
+  document.getElementById("moneyInput").addEventListener("input", validateMoneyInput);
+  document.getElementById("moneyInput").addEventListener("blur", validateMoneyInput);
+
     
   
     // validate so kham
@@ -114,8 +116,8 @@ const formatMoney = (value) => {
       let medicalFilePreview = document.getElementById("medicalFilePreview");
       const rexsokhambenh = /\.(jpg|png|gif)$/i;
       // i khong phân biệt hoa thường
-      const file = medicalFileInput.files[0];
-      sokhamName = file.name; // Lưu tên file vào biến global soKhamc
+      
+     
       // console.log("sokhamName",sokhamName);
 
         if (soKham === "") {
@@ -127,7 +129,8 @@ const formatMoney = (value) => {
         } else {
           let soKham = document.getElementById("medicalFile").value;
           
-          // if (!isFileProcessed) {
+          const file = medicalFileInput.files[0];
+          let sokhamName = file.name; // Lưu tên file vào biến global soKhamc
             const reader = new FileReader();
             reader.onload = function (e) {
                soKhamURL = e.target.result;
@@ -199,7 +202,8 @@ const formatMoney = (value) => {
     };
   // Lấy danh sách checkbox dưới dạng Array và gắn sự kiện change
   //validate checkbox
-    let checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
+  let checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
+  //tra ve 1 nodelist[] va duoc conver sang array
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener("change", validateServices);
     });
@@ -226,11 +230,12 @@ const formatMoney = (value) => {
   // Validate radio button
   const validateRadio = () => {
     // Lấy radio được chọn
-    const checkedRadio = document.querySelector('input[name="optradio"]:checked');
+    const checkedRadio = document.querySelectorAll('input[name="optradio"]:checked');
+    //queryselector tra ve null con queryselectorAll tra ve nodelist[]
     const errRadio = document.getElementById('radioError');
   
     // Kiểm tra xem có radio nào được chọn không
-    if (checkedRadio) {
+    if (checkedRadio.length > 0) {
       errRadio.innerHTML = ''; // Xóa thông báo lỗi
       console.log('Selected radio value:', checkedRadio.value);
       return true;
@@ -249,7 +254,7 @@ const formatMoney = (value) => {
       radio.addEventListener('change', validateRadio);
     });
   } else {
-    console.warn('Không tìm thấy radio buttons với name="optradio"');
+    console.log('Không tìm thấy radio buttons với name="optradio"');
   }
   
   
@@ -302,7 +307,7 @@ const formatMoney = (value) => {
           // console.log("valueServices:", valueServices);
           // console.log("total:", total);
           // console.log("radios:", radios);
-          let them = `<tr><td>${dem}</td><td>${maBenhNhan}</td><td><img src="${soKhamURL}" alt=""></td><td>${dayBoongking}</td><td>${total}</td><td>${valueLabel}</td><td>${radios}</td></tr>`;
+          let them = `<tr><td>${dem}</td><td>${maBenhNhan}</td><td><img src="${soKhamURL}" alt=""  width="150px" height="150px"></td><td>${dayBoongking}</td><td>${total}</td><td>${valueLabel}</td><td>${radios}</td></tr>`;
 
         //cong chuoi
           document.getElementById("bookingTable").innerHTML += them;
@@ -326,7 +331,7 @@ const formatMoney = (value) => {
         
         // document.getElementById("selectKhoa").value = "";
         // Reset checkbox
-        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
           checkbox.checked = false;
         });
         
