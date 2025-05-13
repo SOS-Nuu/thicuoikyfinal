@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tư Vấn Online</title>
+    <link href="../CSS/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/cuoiky.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row header">
+            <!-- <div class="col-5">
+                <img src="../IMAGE/conan.jpg" alt="" height="200px">
+            </div> -->
+            <div class="col-7">
+                <div class="header-text text-center">
+                    <h1>dịch vụ diện hoa </h1>
+                    <h3>giao hàng nhanh chóng</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <nav class="navbar">
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link" href="#">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">ĐẶT MUA HOA</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">CÂY XANH VĂN PHÒNG</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">TIN TỨC</a></li>
+
+                        <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
+                                data-bs-target="#bookingModal">Đặt lịch</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <img src="../IMAGE/conan.jpg" alt="" width="100%">
+            </div>
+            <div class="col-9">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="7" class="text-center">DANH SÁCH THÔNG TIN ĐẶT HÀNG NHANH</th>
+                        </tr>
+                        <tr>
+                            <th>STT</th>
+                            <th>HỌ VÀ TÊN</th>
+                            <th>SỐ ĐIỆN THOẠI</th>
+                            <th>NGÀY ĐẶT</th>
+                            <th>EMAIL CỦA BẠN</th>
+                            <th>LOẠI HOA</th>
+                            <th>LOẠI THANH TOÁN</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="bookingTable">
+                        <tr>
+                            <td>${dem}</td>
+                            <td>${maBenhNhan}</td>
+                            <td>${BLABLA}</td>
+                            <td>${dayBoongking}</td>
+                            <td>${total}</td>
+                            <td>${valueLabel}</td>
+                            <td>${radios}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row" style="background-color: aqua;">
+            <h2 class="text-center">Thông tin sinh viên</h2>
+            <div class="col text-center">
+                <p class="footer-info">MSSV-Họ Tên: 20115401-Lê Văn Nguyên | Lớp: DHCNTT16A</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookingModalLabel">Thong tin dat hang nhanh</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="bookingForm">
+                        <div class="mb-3">
+                            <label for="hovaten" class="form-label">họ và tên *</label>
+                            <input type="text" class="form-control" id="hovaten" placeholder="">
+                            <span id="errhovaten" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sodienthoai" class="form-label">số điện thoại *</label>
+                            <input type="number" class="form-control" id="sodienthoai" placeholder="">
+                            <span id="errsodienthoai" class="text-danger">*</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bookingdate" class="form-label">Ngày dat*</label>
+                            <input type="date" class="form-control" id="bookingdate">
+                            <span id="errbookingdate" class="text-danger">*</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">email *</label>
+                            <input type="text" class="form-control" id="email">
+                            <span id="erremail" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="totalCost" class="form-label">Chuyên khoa</label>
+                            <select class="form-select" id="selectKhoa">
+                                <option for="selectKhoa" value="1">hoa hong nhung</option>
+                                <option for="selectKhoa" value="2">hoa hong vang</option>
+                                <option for="selectKhoa" value="3">hoa hong trang</option>
+                                <option for="selectKhoa" value="4">hoa lan</option>
+                                <option for="selectKhoa" value="5">nhieu loai</option>
+
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Lựa chọn</label>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="radio1" name="optradio"
+                                    value="tienmat">
+                                <label class="form-check-label" for="radio1">tien mat</label>
+                                <!-- them checked neu muon tu dong chon  -->
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="radio2" name="optradio"
+                                    value="chuyenkhoan">
+                                <label class="form-check-label" for="radio2">chuyen khoan</label>
+                            </div>
+                            <span id="radioError" class="text-danger"></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary w-100" form="bookingForm" id="datlich">Đặt
+                        hang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/jquery-3.7.1.min.js"></script>
+    <script src="../JS/bootstrap.bundle.min.js"></script>
+    <script src="../JS/cuoiky.js"></script>
+</body>
+
+</html>
